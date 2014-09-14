@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Zones</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{BASE_TAG}}
+
+    <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/zones.css">
+  </head>
+  <body>
+    <script>
+      window.ZonesENV = {{ENV}};
+      window.EmberENV = window.ZonesENV.EmberENV;
+    </script>
+    <script src="assets/vendor.js"></script>
+    <script src="assets/zones.js"></script>
+    <script>
+      window.Zones = require('zones/app')['default'].create(ZonesENV.APP);
+    </script>
+  </body>
+</html>
