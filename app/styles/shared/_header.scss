@@ -1,5 +1,16 @@
 $nav-bg-color: #EAEBEC;
 
+.top-nav{
+  ul{
+    @include outer-container;
+  }
+
+  margin: 0;
+  padding: 0;
+  background-color: $nav-bg-color;
+  height: 54px;
+}
+
 ul{
   text-decoration: none;
   padding: 0;
@@ -9,24 +20,13 @@ ul{
 
 li{
   display: inline-block;
-  padding: 8px 1.6%;
+  padding: 8px 1.8%;
 }
 
 a{
-  font-size: 1.6em;
+  font-size: 1.5em;
   display: block;
   text-decoration: none;
-}
-
-.top-nav{
-  ul{
-    @include outer-container;
-  }
-  margin: 0;
-  padding: 0;
-  @include background-image( linear-gradient(to left, white, $nav-bg-color) );
-  background-color: $nav-bg-color;
-  height: 60px;
 }
 
 .logo{

@@ -2,6 +2,7 @@
 @import 'base/base';
 @import 'neat/neat';
 @import 'shared/_header';
+@import 'shared/_footer';
 
 $nav-bg-color: #EAEBEC;
 
@@ -17,16 +18,19 @@ body{
 .local{
   margin: 10px;
   font-size: 1.2em;
+  background: tint(red, 93%);
 
 }
 
 .remote{
   margin: 10px;
   font-size: 1.2em;
+  background: tint(blue, 93%);
 }
 
 .result{
   margin: 10px;
   font-size: 1.2em;
+  background: tint(green, 93%);
 }
 
