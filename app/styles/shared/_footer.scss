@@ -3,9 +3,10 @@
   background-color: $nav-bg-color;
   p{
     @include outer-container;
-    padding: 8px 1.6%;
-    font-size: 1.3em;
-    color: #FFF;
+    padding: 10px 1.8%;
+    padding-top: 25px;
+    font-size: 1.05em;
+    color: #888;
     text-align: center;
   }
 }
