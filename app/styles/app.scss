@@ -1,0 +1,32 @@
+@import 'bourbon/bourbon';
+@import 'base/base';
+@import 'neat/neat';
+@import 'shared/_header';
+
+$nav-bg-color: #EAEBEC;
+
+.main-body{
+  @include outer-container;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.local{
+  margin: 10px;
+  font-size: 1.2em;
+
+}
+
+.remote{
+  margin: 10px;
+  font-size: 1.2em;
+}
+
+.result{
+  margin: 10px;
+  font-size: 1.2em;
+}
+

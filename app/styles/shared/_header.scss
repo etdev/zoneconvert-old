@@ -1,0 +1,38 @@
+$nav-bg-color: #EAEBEC;
+
+ul{
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+li{
+  display: inline-block;
+  padding: 8px 1.6%;
+}
+
+a{
+  font-size: 1.6em;
+  display: block;
+  text-decoration: none;
+}
+
+.top-nav{
+  ul{
+    @include outer-container;
+  }
+  margin: 0;
+  padding: 0;
+  @include background-image( linear-gradient(to left, white, $nav-bg-color) );
+  background-color: $nav-bg-color;
+  height: 60px;
+}
+
+.logo{
+  font-weight: bold;
+}
+
+.refresh-content{
+  float: right;
+}

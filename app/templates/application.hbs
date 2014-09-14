@@ -1,3 +1,25 @@
-<h2 id='title'>Welcome to Ember.js</h2>
+{{partial 'shared/_header'}}
+
+<form>
+
+  <div class="local">
+    <label>Your location:</label>
+    {{input type="text" name="location_local"}}
+  </div>
+
+  <div class="remote">
+    <label>Remote location:</label>
+    {{input type="text" name="location_remote"}}
+
+    <label>Remote time:</label>
+    {{input type="text" name="time_remote"}}
+
+    <button {{action ''}}>Submit</button>
+  </div>
+
+  <div class="result">
+    <label>Your time:</label>
+    {{input type="text" name="result_time"}}
+  </div>
 
 {{outlet}}
