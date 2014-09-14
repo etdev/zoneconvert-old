@@ -1,0 +1,28 @@
+$flash-text-size: 1.05em;
+
+.flash{
+  margin: 10px;
+  border-radius: 6px;
+  font-size: $flash-text-size;
+  text-align: center;
+}
+
+.flash-success{
+  @extend .flash;
+  @include flash(#E6EFC2);
+}
+
+.flash-notice{
+  @extend .flash;
+  @include flash(#FFF6BF);
+}
+
+.flash-error{
+  @extend .flash;
+  @include flash(#FBE3E4);
+}
+
+.flash-link{
+  font-size: $flash-text-size;
+  display: inline;
+}
