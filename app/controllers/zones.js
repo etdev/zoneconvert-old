@@ -1,4 +1,13 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
+var ZonesController = Ember.ArrayController.extend({
+
+  actions: {
+    parseInputAddress: function(){
+      var locationLocal = this.get('locationLocal');
+      console.log("The input address is: " + locationLocal);
+    }
+  }
 });
+
+export default ZonesController;

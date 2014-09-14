@@ -1,43 +1,5 @@
 {{partial 'shared/_header'}}
 
-<div class="main-body">
-  <div class="flash-success">
-       a success message
-      <a class="flash-link" href="#">with a link</a>
-  </div>
-  <div class="flash-notice">
-       a notice  message
-      <a class="flash-link" href="#">with a link</a>
-  </div>
-  <div class="flash-error">
-       an error message
-      <a class="flash-link" href="#">with a link</a>
-  </div>
-
-  <form>
-    <div class="local">
-      <label>Your location:</label>
-      {{input type="text" name="location_local"}}
-    </div>
-
-    <div class="remote">
-      <label>Remote location:</label>
-      {{input type="text" name="location_remote"}}
-
-      <label>Remote time:</label>
-      {{input type="text" name="time_remote"}}
-
-      <button {{action ''}}>Submit</button>
-    </div>
-
-    <div class="result">
-      <label>Your time:</label>
-      {{input type="text" name="result_time"}}
-    </div>
-  </form>
-
   {{outlet}}
-
-</div>
 
 {{partial 'shared/_footer'}}
