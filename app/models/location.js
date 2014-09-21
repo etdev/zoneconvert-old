@@ -10,6 +10,8 @@ export default DS.Model.extend({
   adminArea4Type: DS.attr('string'),
   adminArea3: DS.attr('string'),
   adminArea3Type: DS.attr('string'),
+  adminArea2: DS.attr('string'),
+  adminArea2Type: DS.attr('string'),
   adminArea1: DS.attr('string'),
   adminArea1Type: DS.attr('string'),
   postalCode: DS.attr('string'),
