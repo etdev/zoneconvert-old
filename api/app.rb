@@ -3,11 +3,18 @@ require 'sinatra/cross_origin'
 require 'yaml'
 require 'curb'
 require 'json'
+require 'sinatra/cross_origin'
+
+enable :cross_origin
+set :allow_origin, :any
 
 class ZonesAPI < Sinatra::Base
   get '/' do
+    headers \
+          "Access-Control-Allow-Origin"   => "*"
+    location = params["location"]
     data = symbolize_keys(YAML.load_file('geocode.yaml'))
-    url = build_url(data[:base_url], data[:api_key], escape_HTML("Lancaster, PA"))
+    url = build_url(data[:base_url], data[:api_key], escape_HTML(location))
     response = get_response(url)["results"][0]["locations"][0]
     process_json(response).to_json
   end
@@ -28,6 +35,9 @@ class ZonesAPI < Sinatra::Base
 
   def build_url(base_url, api_key, location)
     "#{base_url}?key=#{api_key}&location=#{location}"
+  end
+
+  def coord_to_time(lat, long)
   end
 
   def process_json(data)
