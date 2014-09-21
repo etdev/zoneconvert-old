@@ -9,11 +9,10 @@ var ZonesController = Ember.ArrayController.extend({
       Ember.$.ajax({
         type: "GET",
         url: "http://api.zn.ericturnerdev.com?location=" + locationLocal,
-        //data: "location=" + locationLocal,
         success: function(json) {
           console.log(json);
           var result = JSON.parse(json).location;
-          topAlertBox.innerHTML = "Lat: " + result.lat + ", " + "Lng: " +  result.lng;
+          topAlertBox.innerHTML = result;
         },
         error: function(e) { topAlertBox.innerHTML = "Please enter your location.";
                              console.log(e.message);

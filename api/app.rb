@@ -4,6 +4,7 @@ require 'yaml'
 require 'curb'
 require 'json'
 require 'sinatra/cross_origin'
+require 'timezone'
 
 enable :cross_origin
 set :allow_origin, :any
@@ -15,8 +16,10 @@ class ZonesAPI < Sinatra::Base
     location = params["location"]
     data = symbolize_keys(YAML.load_file('geocode.yaml'))
     url = build_url(data[:base_url], data[:api_key], escape_HTML(location))
-    response = get_response(url)["results"][0]["locations"][0]
-    process_json(response).to_json
+    response = process_json(get_response(url)["results"][0]["locations"][0])
+    time = JSON.parse(coord_to_time(response["lat"], response["lng"]))
+    puts time
+    response
   end
 
   def symbolize_keys(my_hash)
@@ -37,7 +40,14 @@ class ZonesAPI < Sinatra::Base
     "#{base_url}?key=#{api_key}&location=#{location}"
   end
 
-  def coord_to_time(lat, long)
+  def coord_to_time(lat, lng)
+    Timezone::Configure.begin do |c|
+      c.username = YAML.load_file('geocode.yaml')[:geoname]
+    end
+    puts "latitude: #{lat}, longitude: #{lng}"
+    tz = Timezone::Zone.new :latlon => [lat, lng]
+    tz.zone
+    tz.time Time.now
   end
 
   def process_json(data)
