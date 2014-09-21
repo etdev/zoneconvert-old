@@ -5,7 +5,9 @@ var ZonesController = Ember.ArrayController.extend({
   actions: {
     parseInputAddress: function(){
       var locationLocal = this.get('locationLocal');
-      console.log("The input address is: " + locationLocal);
+      var fieldNameElement = document.getElementById("sandbox");
+      fieldNameElement.innerHTML = locationLocal;
+      console.log("User inputted address: " + locationLocal);
     }
   }
 });

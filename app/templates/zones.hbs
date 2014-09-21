@@ -1,17 +1,6 @@
 <div class="main-body">
-  <div class="flash-success">
-       a success message
-      <a class="flash-link" href="#">with a link</a>
+  <div class="flash-notice" id="sandbox">
   </div>
-  <div class="flash-notice">
-       a notice  message
-      <a class="flash-link" href="#">with a link</a>
-  </div>
-  <div class="flash-error">
-       an error message
-      <a class="flash-link" href="#">with a link</a>
-  </div>
-
   <form>
     <div class="local">
       <label>Your location:</label>
@@ -20,20 +9,18 @@
 
     <div class="remote">
       <label>Remote location:</label>
-      {{input type="text" name="location_remote"}}
+      {{input type="text" value=locationRemote name="location_remote"}}
 
       <label>Remote time:</label>
-      {{input type="text" name="time_remote"}}
+      {{input type="text" value=timeRemote name="time_remote"}}
 
       <button {{action 'parseInputAddress'}}>Submit</button>
     </div>
 
     <div class="result">
       <label>Your time:</label>
-      {{input type="text" name="result_time"}}
+      {{input type="text" value=result name="result_time"}}
     </div>
   </form>
 
-  <div class="sandbox">
-  </div>
 </div>

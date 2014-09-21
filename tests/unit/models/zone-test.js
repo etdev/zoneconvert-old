@@ -3,7 +3,7 @@ import {
   test
 } from 'ember-qunit';
 
-moduleForModel('location', 'Location', {
+moduleForModel('zone', 'Zone', {
   // Specify the other units that are required for this test.
   needs: []
 });
