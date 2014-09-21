@@ -1,6 +1,6 @@
 import DS from 'ember-data';
 
-export default DS.Model.extend({
+var Zone = DS.Model.extend({
   street: DS.attr('string'),
   adminArea6: DS.attr('string'),
   adminArea6Type: DS.attr('string'),
@@ -28,3 +28,14 @@ export default DS.Model.extend({
   disp_lng: DS.attr('string'),
   mapUrl: DS.attr('string')
 });
+
+Zone.reopenClass({
+  FIXTURES: [
+    {
+      id: '1',
+      street: '123 fake street',
+    }
+  ]
+});
+
+export default Zone;
