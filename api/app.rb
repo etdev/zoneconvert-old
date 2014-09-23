@@ -16,9 +16,13 @@ class ZonesAPI < Sinatra::Base
     load_data('geocode.yaml')
     url = build_url_mq(escape_HTML(location))
     response = process_json(get_response(url)["results"][0]["locations"][0])
-    #time = coord_to_time(response["lat"], response["lng"])
-    #puts time
-    response.to_json
+    puts "Current time: #{Time.now.utc}"
+    temp_time = get_timestamp(Time.now.utc)
+    puts "Current timestamp (UTC): #{temp_time}"
+    puts "Converted back from timestamp: #{Time.at(temp_time)}"
+    time = coord_to_time(response[:lat], response[:lng], Time.now.utc)
+    puts time.to_json
+    time.to_json
   end
 
   def symbolize_keys(my_hash)
@@ -40,19 +44,31 @@ class ZonesAPI < Sinatra::Base
   end
 
   def build_url_g(latlng, timestamp)
-    "#{@base_url_g}?key=#{@api_key_g}&location=#{latlng}&timestamp=#{timestamp}"
+    "#{@base_url_g}?&location=#{latlng}&timestamp=#{timestamp}&#{@api_key_g}"
   end
 
-  def coord_to_time(lat, lng)
+  def remove_utc(str)
+    str[0..-4]
+  end
+
+  def coord_to_time(lat, lng, base_time)
     latlng = "#{lat},#{lng}"
-    get_response(build_url_g(latlng, get_timestamp))
+    base_timestamp = get_timestamp(base_time)
+    url = build_url_g(latlng, get_timestamp(base_timestamp))
+    response = symbolize_keys(get_response(url))
+    dst_off = response[:dstOffset]
+    raw_off = response[:rawOffset]
+    process_timestamp(base_timestamp, dst_off, raw_off)
   end
 
-  def get_timestamp
-    Time.now.to_i
+  def get_timestamp(time)
+    time.to_i
   end
 
-  def process_google
+  def process_timestamp(base_timestamp, dst_off, raw_off)
+    puts "base_timestamp: #{base_timestamp}, dst_off: #{dst_off}, raw_off: #{raw_off}"
+    total = base_timestamp + dst_off + raw_off
+    { time: remove_utc(Time.at(total).utc.to_s) }
 
   end
 
@@ -91,9 +107,8 @@ class ZonesAPI < Sinatra::Base
    disp_lat = data["displayLatLng"]["lat"]
    disp_lng = data["displayLatLng"]["lng"]
 
-   location = { id: 1, street: street, adminArea6: adminArea6, adminArea6Type: adminArea6Type, adminArea5: adminArea5, adminArea5Type: adminArea5Type, adminArea4: adminArea4, adminArea4Type: adminArea4Type, adminArea3: adminArea3, adminArea3Type: adminArea3Type, adminArea2: adminArea2, adminArea2Type: adminArea2Type, adminArea1: adminArea1, adminArea1Type: adminArea1Type, postalCode: postalCode, geocodeQualityCode: geocodeQualityCode, geocodeQuality: geocodeQuality, dragPoint: dragPoint, sideOfStreet: sideOfStreet, linkId: linkId, unknownInput: unknownInput, type: type, lat: lat, lng: lng, disp_lat: disp_lat, disp_lng: disp_lng  }
+   return { street: street, adminArea6: adminArea6, adminArea6Type: adminArea6Type, adminArea5: adminArea5, adminArea5Type: adminArea5Type, adminArea4: adminArea4, adminArea4Type: adminArea4Type, adminArea3: adminArea3, adminArea3Type: adminArea3Type, adminArea2: adminArea2, adminArea2Type: adminArea2Type, adminArea1: adminArea1, adminArea1Type: adminArea1Type, postalCode: postalCode, geocodeQualityCode: geocodeQualityCode, geocodeQuality: geocodeQuality, dragPoint: dragPoint, sideOfStreet: sideOfStreet, linkId: linkId, unknownInput: unknownInput, type: type, lat: lat, lng: lng, disp_lat: disp_lat, disp_lng: disp_lng  }
 
-   { location: location }
   end
 
 end
