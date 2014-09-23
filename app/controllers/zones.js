@@ -3,7 +3,7 @@ import Ember from 'ember';
 var ZonesController = Ember.ArrayController.extend({
 
   actions: {
-    parseInputAddress: function(){
+    parseInput: function(){
       var locationLocal = this.get('locationLocal');
       var topAlertBox  = document.getElementById("sandbox");
       Ember.$.ajax({
@@ -14,7 +14,7 @@ var ZonesController = Ember.ArrayController.extend({
           var result = JSON.parse(json).time;
           topAlertBox.innerHTML = result;
         },
-        error: function(e) { topAlertBox.innerHTML = "Please enter your location.";
+        error: function(e) { topAlertBox.innerHTML = "Please enter a valid location.";
                              console.log(e.message);
         }
       });

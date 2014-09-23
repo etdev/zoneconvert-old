@@ -9,6 +9,6 @@ var App = Ember.Application.extend({
   Resolver: Resolver
 });
 
-loadInitializers(App, 'zones');
+//loadInitializers(App, 'zones');
 
 export default App;

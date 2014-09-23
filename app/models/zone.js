@@ -29,13 +29,4 @@ var Zone = DS.Model.extend({
   mapUrl: DS.attr('string')
 });
 
-Zone.reopenClass({
-  FIXTURES: [
-    {
-      id: '1',
-      street: '123 fake street',
-    }
-  ]
-});
-
 export default Zone;

@@ -2,7 +2,7 @@ import Ember from 'ember';
 import DS from 'ember-data';
 
 var ZoneAdapter = DS.RESTAdapter.extend({
-  host: 'http://api.zn.ericturnerdev.com'
+  host: 'http://api.zn.etdev.me'
 });
 
 export default ZoneAdapter;

@@ -9,12 +9,12 @@
 
     <div class="remote">
       <label>Remote location:</label>
-      {{input type="text" value=locationRemote name="location_remote"}}
+      {{input type="text" value=locationRemote name="location_remote" id="locationRemote"}}
 
       <label>Remote time:</label>
       {{input type="text" value=timeRemote name="time_remote"}}
 
-      <button {{action 'parseInputAddress'}}>Submit</button>
+      <button {{action 'parseInput'}}>Submit</button>
     </div>
 
     <div class="result">
