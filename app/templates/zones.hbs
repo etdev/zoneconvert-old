@@ -11,6 +11,10 @@
       <label>Remote location:</label>
       {{input type="text" value=locationRemote name="location_remote" id="locationRemote"}}
 
+      <label>Remote date:</label>
+      {{date-picker date=mydate readonly="true" valueFormat='YYYY-MM-DD'}}
+      <!--{{input type="text" value=timeRemote name="time_remote"}}-->
+
       <label>Remote time:</label>
       {{input type="text" value=timeRemote name="time_remote"}}
       <button {{action 'parseInput'}}>Submit</button>
