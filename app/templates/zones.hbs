@@ -1,47 +1,49 @@
-<div class="main-body">
-  <div class="flash-notice" id="sandbox">
+<div class="main-body-outer">
+  <div class="main-body">
+    <div class="flash-notice" id="sandbox">
+    </div>
+    <form>
+      <div class="local">
+        <label>Your location:</label>
+        {{input type="text" value=locationLocal name="location_local"}}
+      </div>
+
+      <div class="remote">
+        <label>Destination location:</label>
+        {{input type="text" value=locationRemote name="location_remote" id="locationRemote"}}
+
+        <label>Destination date:</label>
+        {{date-picker date=mydate readonly="true" value=dateRemote valueFormat='YYYY-MM-DD'}}
+
+        <label>Destination time:</label>
+        <select>
+          <option value="0000"> 12:00 am </option>
+          <option value="0100"> 01:00 am </option>
+          <option value="0200"> 02:00 am </option>
+          <option value="0300"> 03:00 am </option>
+          <option value="0400"> 04:00 am </option>
+          <option value="0500"> 05:00 am </option>
+          <option value="0600"> 06:00 am </option>
+          <option value="0700"> 07:00 am </option>
+          <option value="0800"> 08:00 am </option>
+          <option value="0900"> 09:00 am </option>
+          <option value="1000"> 10:00 am </option>
+          <option value="1100"> 11:00 am </option>
+          <optgroup label="---"></optgroup>
+          <option value="1200"> 12:00 pm </option>
+          <option value="1300"> 01:00 pm </option>
+          <option value="1400"> 02:00 pm </option>
+          <option value="1500"> 03:00 pm </option>
+          <option value="1600"> 04:00 pm </option>
+          <option value="1700"> 05:00 pm </option>
+          <option value="1800"> 06:00 pm </option>
+          <option value="1900"> 07:00 pm </option>
+          <option value="2000"> 08:00 pm </option>
+          <option value="2100"> 09:00 pm </option>
+          <option value="2200"> 10:00 pm </option>
+          <option value="2300"> 11:00 pm </option>
+      </select>
+        <button {{action 'parseInput'}}>Submit</button>
+      </div>
   </div>
-  <form>
-    <div class="local">
-      <label>Your location:</label>
-      {{input type="text" value=locationLocal name="location_local"}}
-    </div>
-
-    <div class="remote">
-      <label>Destination location:</label>
-      {{input type="text" value=locationRemote name="location_remote" id="locationRemote"}}
-
-      <label>Destination date:</label>
-      {{date-picker date=mydate readonly="true" value=dateRemote valueFormat='YYYY-MM-DD'}}
-
-      <label>Destination time:</label>
-      <select>
-        <option value="0000"> 12:00 am </option>
-        <option value="0100"> 01:00 am </option>
-        <option value="0200"> 02:00 am </option>
-        <option value="0300"> 03:00 am </option>
-        <option value="0400"> 04:00 am </option>
-        <option value="0500"> 05:00 am </option>
-        <option value="0600"> 06:00 am </option>
-        <option value="0700"> 07:00 am </option>
-        <option value="0800"> 08:00 am </option>
-        <option value="0900"> 09:00 am </option>
-        <option value="1000"> 10:00 am </option>
-        <option value="1100"> 11:00 am </option>
-        <optgroup label="---"></optgroup>
-        <option value="1200"> 12:00 pm </option>
-        <option value="1300"> 01:00 pm </option>
-        <option value="1400"> 02:00 pm </option>
-        <option value="1500"> 03:00 pm </option>
-        <option value="1600"> 04:00 pm </option>
-        <option value="1700"> 05:00 pm </option>
-        <option value="1800"> 06:00 pm </option>
-        <option value="1900"> 07:00 pm </option>
-        <option value="2000"> 08:00 pm </option>
-        <option value="2100"> 09:00 pm </option>
-        <option value="2200"> 10:00 pm </option>
-        <option value="2300"> 11:00 pm </option>
-    </select>
-      <button {{action 'parseInput'}}>Submit</button>
-    </div>
 </div>
