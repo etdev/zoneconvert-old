@@ -8,13 +8,13 @@
     </div>
 
     <div class="remote">
-      <label>Remote location:</label>
+      <label>Destination location:</label>
       {{input type="text" value=locationRemote name="location_remote" id="locationRemote"}}
 
-      <label>Remote date:</label>
+      <label>Destination date:</label>
       {{date-picker date=mydate readonly="true" value=dateRemote valueFormat='YYYY-MM-DD'}}
 
-      <label>Remote time:</label>
+      <label>Destination time:</label>
       <select>
         <option value="0000"> 12:00 am </option>
         <option value="0100"> 01:00 am </option>
@@ -44,12 +44,6 @@
     </select>
       <button {{action 'parseInput'}}>Submit</button>
     </div>
-
-    <div class="result">
-      <label>Your time:</label>
-      {{input type="text" value=result name="result_time"}}
-    </div>
-  </form>
 
  {{#each}}
    <p> {{street}} </p>
