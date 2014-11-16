@@ -7,46 +7,50 @@ var ZonesController = Ember.ArrayController.extend({
       var locationLocal = this.get('locationLocal');
       var locationRemote = this.get('locationRemote');
       var topAlertBox  = document.getElementById("sandbox");
-      Ember.$.ajax({
-        type: "GET",
-        url: "http://api.zn.ericturnerdev.com?location=" + locationLocal,
-        success: function(json) {
-          console.log(json);
-          var resultLocal = JSON.parse(json).time;
-          /*
-          topAlertBox.innerHTML = result;
-          */
-        },
-        error: function(e) { topAlertBox.innerHTML = "Please enter a valid location.";
-                             console.log(e.message);
-        }
-      });
-      Ember.$.ajax({
-        type: "GET",
-        url: "http://api.zn.ericturnerdev.com?location=" + locationRemote,
-        success: function(json) {
-          console.log(json);
-          var resultRemote = JSON.parse(json).time;
-          /*
-          topAlertBox.innerHTML = result;
-          */
-        },
-        error: function(e) { topAlertBox.innerHTML = "Please enter a valid location.";
-                             console.log(e.message);
-        }
-      });
+      var targetTime = this.get('locationTarget');
 
-      var sLocal = resultLocal.split(/[-: ]/);
-      var dLocal = new Date(s[0], s[1]-1, s[2], s[3], s[4], s[5]);
+      //Fetch local info
+      var localTime = getTime(locationLocal);
+      var remoteTime = getTime(locationRemote);
+      var diffDays = getDayDiff(localTime, remoteTime);
 
-      var sRemote = resultRemote.split(/[-: ]/);
-      var dRemote = new Date(s[0], s[1]-1, s[2], s[3], s[4], s[5]);
+      function getTime(location){
+        //Fetch remote info
+        Ember.$.ajax({
+          type: "GET",
+          url: "http://api.zoneconvert.com?location=" + location,
+          success: function(json) {
+            console.log(json);
+            var result = JSON.parse(json).time;
+          },
+          error: function(e) {  console.log(e.message);
+          }
+        });
+      }
 
-      var sEvent = resultEvent.split(/[-: ]/);
-      var dEvent = new Date(s[0], s[1]-1, s[2], s[3], s[4], s[5]);
+      function getDayDiff(localTime, remoteTime){
+        localTime = new Date(localTime);
+        remoteTime = new Date(remoteTime);
+        var diff = localTime.getTime() - remoteTime.getTime();
+        var diffDays = Math.ceil(diff / (1000*3600*24));
+        return diffDays;
+      }
 
-      var secDiff = dRemote - dLocal;
-      //
+      function getHourDiff(localTime, remoteTime){
+        localTime = new Date(localTime);
+        remoteTime = new Date(remoteTime);
+        var diff = localTime.getTime() - remoteTime.getTime();
+        var diffHours = Math.ceil(diff / (1000*3600))%24;
+        return diffHours;
+      }
+
+      function getHourDiff(localTime, remoteTime){
+        localTime = new Date(localTime);
+        remoteTime = new Date(remoteTime);
+        var diff = localTime.getTime() - remoteTime.getTime();
+        var diffHours = Math.ceil(diff / (1000*60))%60;
+        return diffHours;
+      }
     }
   }
 });
