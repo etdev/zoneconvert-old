@@ -4,38 +4,23 @@ var ZonesController = Ember.ArrayController.extend({
 
   actions: {
     parseInput: function(){
-      var locationLocal = this.get('locationLocal');
-      var locationRemote = this.get('locationRemote');
-      var topAlertBox  = document.getElementById("sandbox");
-      var targetTime = this.get('locationTarget');
 
-      //Fetch local info
-      var localDateTime;
-      getTime(locationLocal, 'local');
-      console.log("localDateTime: " + localDateTime + "\n");
-      var remoteDateTime;
-      getTime(locationRemote, 'remote');
-      console.log("remoteDateTime: " + remoteDateTime + "\n");
-      var localDate = extractDate(localDateTime);
-      console.log("localDate: " + localDate + "\n");
-      var localTime  = extractTime(localDateTime);
-      console.log("localTime: " + localTime + "\n");
-      var remoteDate = extractDate(remoteDateTime);
-      console.log("remoteDate: " + remoteDate + "\n");
-      var remoteTime  = extractTime(localDateTime);
-      console.log("remoteTime: " + remoteTime + "\n");
-
-      var hourDiff = getHourDiff(localDateTime, remoteDateTime);
-      var minDiff = getMinDiff(localDateTime, remoteDateTime);
-
-      //var diff  = getDiff(localTime, remoteTime);
-      //console.log("diff: " + diff + "\n");
-      //var diffDays = getDayDiff(localDate, remoteDate);
-      //console.log("diffDays: " + diffDays + "\n");
-      //var diffHours = getHourDiff(localTime, remoteTime);
-      //console.log("diffHours: " + diffHours + "\n");
-      //var diffMins = getMinuteDiff(localTime, remoteTime);
-      //console.log("diffMins: " + diffMins + "\n");
+    try{
+        var locationLocal = this.get('locationLocal');
+        var locationRemote = this.get('locationRemote');
+        var topAlertBox  = document.getElementById("result");
+        var targetDate = this.get('targetDate');
+        var targetTime = document.getElementById("targetTime").value;
+        var targetDateTime = targetDate + " " + targetTime;
+        var localDateTime;
+        getTime(locationLocal, 'local');
+        var remoteDateTime;
+        getTime(locationRemote, 'remote');
+        var hourMinDiff = getHourMinDiff(localDateTime, remoteDateTime);
+        var newTargetDateTime =  addDateTime(targetDateTime, hourMinDiff);
+        topAlertBox.innerHTML = "Result: " + newTargetDateTime;
+        topAlertBox.className = "flash-success";
+      }catch(e) { topAlertBox.innerHTML = "Failure! Please enter valid locations"; topAlertBox.className = "flash-error"; }
 
       function getTime(location, identifier){
         //Fetch remote info
@@ -55,58 +40,47 @@ var ZonesController = Ember.ArrayController.extend({
         });
       }
 
-      function getDiff(local, remote){
-        local = new Date(local);
-        remote = new Date(remote);
-        var diff = local.getTime() - remote.getTime();
-        return diff;
-      }
-
-      function getDayDiff(local, remote){
-        var diff = getDiff(local, remote);
-        var diffDays = Math.ceil(diff / (1000*3600*24));
-        return diffDays;
-      }
-
-      function getHourDiff(local, remote){
-        var diff = getDiff(local, remote);
-        var diffDays = getDayDiff(local, remote);
-        var diffHours = Math.ceil(diff / (1000*3600));
-        return diffHours;
-      }
-
-      function getMinuteDiff(local, remote){
-        var diff = getDiff(local, remote);
-        var diffHours = getHourDiff(local, remote);
-        var diffMins = Math.ceil(diff / (1000*60))-(60*Math.abs(diffHours));
-        return diffMins;
-      }
-
-      function addDays(date, numDays) {
-        var result = new Date(date);
-        result.setDate(date.getDate() + numDays);
-        return result;
-      }
-
       function extractDate(timeDate){
         timeDate = timeDate.trim();
         var reg = /^([0-9]{4})-([0-9]{2})-([0-9]{2})/;
-        return reg.exec(timeDate)[0];
+        var regResult = reg.exec(timeDate);
+        return regResult;
       }
 
       function extractTime(timeDate){
         timeDate = timeDate.trim();
         var reg = /([0-9]{2}):([0-9]{2}):([0-9]{2})$/;
-        return reg.exec(timeDate)[0];
+        var regResult = reg.exec(timeDate);
+        return regResult;
       }
 
-      function getHourDiff(localDateTime, remoteDateTime){
+      function getHourMinDiff(localDateTime, remoteDateTime){
+        var dayDiff = extractDate(localDateTime)[3] - extractDate(remoteDateTime)[3];
+        var hourDiff = extractTime(localDateTime)[1] - extractTime(remoteDateTime)[1] + 24*dayDiff;
+        var minDiff = extractTime(localDateTime)[2] - extractTime(remoteDateTime)[2];
+        if (minDiff < 5) { minDiff = 0; }
+        return [hourDiff, minDiff];
+      }
+
+      function addDateTime(target, hourMinDiff){
+        var targetUnix = (new Date(target).getTime())/1000;
+        var diffSecs = (hourMinDiff[0]*3600) + (hourMinDiff[1]*60);
+        var resultSecs = targetUnix + diffSecs;
+        var resultDate = new Date(resultSecs*1000);
+        var year = resultDate.getFullYear();
+        var month = resultDate.getMonth()+1;
+        var day = resultDate.getDate();
+        var hour = resultDate.getHours();
+        if (hour < 10){ hour = '0' + hour; }
+        var min = resultDate.getMinutes();
+        if (min < 10){ min = '0' + min; }
+        var sec = resultDate.getSeconds();
+        if (sec < 10){ sec = '0' + sec; }
+        var result = "" + year  + "-" + month + "-" + day + " " + hour + ":" + min + ":" + sec;
+        return result;
 
       }
 
-      function normalizeTime(time){
-
-      }
     }
   }
 });

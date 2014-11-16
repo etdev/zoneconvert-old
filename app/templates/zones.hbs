@@ -1,6 +1,6 @@
 <div class="main-body-outer">
   <div class="main-body">
-    <div class="flash-notice" id="sandbox">
+    <div id="result">
     </div>
     <form>
       <div class="local">
@@ -13,35 +13,35 @@
         {{input type="text" value=locationRemote name="location_remote" id="locationRemote"}}
 
         <label>Destination date:</label>
-        {{date-picker date=mydate readonly="true" value=dateRemote valueFormat='YYYY-MM-DD'}}
+        {{date-picker date=mydate readonly="true" value=targetDate valueFormat='YYYY-MM-DD'}}
 
         <label>Destination time:</label>
-        <select>
-          <option value="0000"> 12:00 am </option>
-          <option value="0100"> 01:00 am </option>
-          <option value="0200"> 02:00 am </option>
-          <option value="0300"> 03:00 am </option>
-          <option value="0400"> 04:00 am </option>
-          <option value="0500"> 05:00 am </option>
-          <option value="0600"> 06:00 am </option>
-          <option value="0700"> 07:00 am </option>
-          <option value="0800"> 08:00 am </option>
-          <option value="0900"> 09:00 am </option>
-          <option value="1000"> 10:00 am </option>
-          <option value="1100"> 11:00 am </option>
+        <select id="targetTime">
+          <option value="00:00:00"> 12:00 am </option>
+          <option value="01:00:00"> 01:00 am </option>
+          <option value="02:00:00"> 02:00 am </option>
+          <option value="03:00:00"> 03:00 am </option>
+          <option value="04:00:00"> 04:00 am </option>
+          <option value="05:00:00"> 05:00 am </option>
+          <option value="06:00:00"> 06:00 am </option>
+          <option value="07:00:00"> 07:00 am </option>
+          <option value="08:00:00"> 08:00 am </option>
+          <option value="09:00:00"> 09:00 am </option>
+          <option value="10:00:00"> 10:00 am </option>
+          <option value="11:00:00"> 11:00 am </option>
           <optgroup label="---"></optgroup>
-          <option value="1200"> 12:00 pm </option>
-          <option value="1300"> 01:00 pm </option>
-          <option value="1400"> 02:00 pm </option>
-          <option value="1500"> 03:00 pm </option>
-          <option value="1600"> 04:00 pm </option>
-          <option value="1700"> 05:00 pm </option>
-          <option value="1800"> 06:00 pm </option>
-          <option value="1900"> 07:00 pm </option>
-          <option value="2000"> 08:00 pm </option>
-          <option value="2100"> 09:00 pm </option>
-          <option value="2200"> 10:00 pm </option>
-          <option value="2300"> 11:00 pm </option>
+          <option value="12:00:00"> 12:00 pm </option>
+          <option value="13:00:00"> 01:00 pm </option>
+          <option value="14:00:00"> 02:00 pm </option>
+          <option value="15:00:00"> 03:00 pm </option>
+          <option value="16:00:00"> 04:00 pm </option>
+          <option value="17:00:00"> 05:00 pm </option>
+          <option value="18:00:00"> 06:00 pm </option>
+          <option value="19:00:00"> 07:00 pm </option>
+          <option value="20:00:00"> 08:00 pm </option>
+          <option value="21:00:00"> 09:00 pm </option>
+          <option value="22:00:00"> 10:00 pm </option>
+          <option value="23:00:00"> 11:00 pm </option>
       </select>
         <button {{action 'parseInput'}}>Submit</button>
       </div>
