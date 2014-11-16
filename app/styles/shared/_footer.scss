@@ -1,8 +1,7 @@
 .footer{
   background-color: $nav-bg-color;
   bottom: 0;
-  max-height: 100px;
-  position: fixed;
+  min-height: 100px;
   width: 100%;
   p{
     @include outer-container;
