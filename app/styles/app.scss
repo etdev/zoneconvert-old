@@ -5,7 +5,7 @@
 @import 'shared/_footer';
 @import 'shared/_flash';
 
-$nav-bg-color: #EAEBEC;
+$nav-bg-color: #333;
 
 .main-body{
   @include outer-container;
@@ -14,19 +14,18 @@ $nav-bg-color: #EAEBEC;
 body{
   margin: 0;
   padding: 0;
+  background-color: #eee;
 }
 
 .local{
   margin: 10px;
   font-size: 1.2em;
-  background: tint(red, 93%);
 
 }
 
 .remote{
   margin: 10px;
   font-size: 1.2em;
-  background: tint(blue, 93%);
 }
 
 .result{
