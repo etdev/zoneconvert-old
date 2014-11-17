@@ -4,13 +4,16 @@ var ZonesController = Ember.ArrayController.extend({
 
   actions: {
     parseInput: function(){
+    var locationLocal, locationRemote, targetDate, topAlertBox, targetTime;
 
     try{
-        var locationLocal = this.get('locationLocal');
-        var locationRemote = this.get('locationRemote');
-        var topAlertBox  = document.getElementById("result");
-        var targetDate = this.get('targetDate');
-        var targetTime = document.getElementById("targetTime").value;
+        locationLocal = this.get('locationLocal');
+        locationRemote = this.get('locationRemote');
+        targetDate = this.get('targetDate');
+        topAlertBox  = document.getElementById("result");
+        targetTime = document.getElementById("targetTime").value;
+      }catch(e) {
+        topAlertBox.innerHTML = "Failure! Please enter valid locations"; topAlertBox.className = "flash-error"; }
         var targetDateTime = targetDate + " " + targetTime;
         var localDateTime;
         getTime(locationLocal, 'local');
@@ -20,7 +23,6 @@ var ZonesController = Ember.ArrayController.extend({
         var newTargetDateTime =  addDateTime(targetDateTime, hourMinDiff);
         topAlertBox.innerHTML = "Result: " + newTargetDateTime;
         topAlertBox.className = "flash-success";
-      }catch(e) { topAlertBox.innerHTML = "Failure! Please enter valid locations"; topAlertBox.className = "flash-error"; }
 
       function getTime(location, identifier){
         //Fetch remote info
@@ -78,9 +80,7 @@ var ZonesController = Ember.ArrayController.extend({
         if (sec < 10){ sec = '0' + sec; }
         var result = "" + year  + "-" + month + "-" + day + " " + hour + ":" + min + ":" + sec;
         return result;
-
       }
-
     }
   }
 });
