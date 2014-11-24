@@ -5,18 +5,18 @@ ul {
 }
 .top-nav{
   ul{
-    @include outer-container;
+    max-height: 54px;
+    padding: 0 0 0 0;
   }
 
   margin: 0;
-  padding: 4px 0 0 0;
   background-color: $nav-bg-color;
   height: 54px;
 
   .icon{
-    padding: 8px 8px 8px 8px;
-    max-height: 45px;
-    max-width: 45px;
+    padding: 12px 8px 8px 8px;
+    max-height: 46px;
+    max-width: 46px;
   }
 }
 
@@ -29,6 +29,7 @@ ul{
 
 li{
   display: inline-block;
+  background-color: $nav-bg-color;
   padding: 10px;
 }
 
@@ -79,6 +80,7 @@ a{
         {
             width: 100%;
             float: none;
+            border-top: 1px solid #444;
         }
 
     /* second level */
