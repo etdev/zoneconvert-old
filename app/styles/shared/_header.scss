@@ -1,6 +1,9 @@
 $nav-bg-color: #333;
 
 .menu-container{
+  padding: 0 0% 0 6%;
+  background-color: #333;
+  display: none;
   width: 100%;
   overflow: hidden;
 
@@ -9,7 +12,7 @@ $nav-bg-color: #333;
     font-weight: bold;
   }
   a.right{
-    margin: 0 1em 0 0;
+    margin: 0 10% 0 0;
     float: right;
   }
   a.left{
@@ -32,7 +35,7 @@ $nav-bg-color: #333;
   }
 
   .icon{
-    padding: 16px 8px 8px 8px;
+    padding: 10px 10px 10px 10px;
     max-height: 46px;
     max-width: 46px;
   }
@@ -62,7 +65,9 @@ a{
 {
     #nav
     {
-        position: relative;
+      .menu-container{
+        display: block;
+      }
     }
         #nav > a
         {

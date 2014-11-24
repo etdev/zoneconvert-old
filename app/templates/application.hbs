@@ -1,3 +1,21 @@
+<nav id="nav" class="top-nav" role="navigation">
+  <div class="menu-container">
+    <a id="menu_icon" class="right"> <img class="icon" src="menu.png" onclick="toggleHeader();" > </a>
+    {{link-to 'ZONEConvert' 'zones' class='logo left'}}
+  </div>
+  <ul>
+    <li> {{link-to 'Home' 'application'}} </li>
+    <li> {{link-to 'About' 'about'}} </li>
+    <!--<li> {{link-to '日本語' 'application' }} </li>-->
+  </ul>
+</nav>
+
+  {{outlet}}
+
+<div class="footer">
+  <p> Copyright zoneconvert.com 2014 </p>
+</div>
+
 <script>
   function toggleHeader(){
         var menu_icon = Ember.$("#menu_icon");
@@ -13,20 +31,3 @@
         }
       }
 </script>
-<nav id="nav" class="top-nav" role="navigation">
-  <div class="menu-container">
-    <a id="menu_icon" class="right"> <img class="icon" src="menu.png" onclick="toggleHeader();" > </a>
-    {{link-to 'ZONEConvert' 'zones' class='logo left'}}
-  </div>
-  <ul>
-    <li> {{link-to 'Home' 'application'}} </li>
-    <li> {{link-to 'About' 'about'}} </li>
-    <li> {{link-to '日本語' 'application' }} </li>
-  </ul>
-</nav>
-
-  {{outlet}}
-
-<div class="footer">
-  <p> Copyright zoneconvert.com 2014 </p>
-</div>

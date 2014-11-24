@@ -9,6 +9,8 @@ $nav-bg-color: #eee;
 
 .main-body-outer{
   background-color: #eee;
+  margin: 3% 6% 3% 6%;
+
 }
 
 .main-body{
@@ -16,8 +18,8 @@ $nav-bg-color: #eee;
 }
 
 body{
-  margin: 0;
-  padding: 0;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
   background-color: $nav-bg-color;
 }
 
@@ -46,6 +48,8 @@ body{
 #nav
 {
     /* container */
+  padding-top: 1%;
+  background-color: #333;
 }
     #nav > a
     {
@@ -61,6 +65,7 @@ body{
     #nav > ul
     {
         height: 3.75em;
+        background-color: #333;
     }
         #nav > ul > li
         {
