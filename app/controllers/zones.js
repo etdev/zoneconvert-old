@@ -81,8 +81,21 @@ var ZonesController = Ember.ArrayController.extend({
         var result = "" + year  + "-" + month + "-" + day + " " + hour + ":" + min + ":" + sec;
         return result;
       }
-    }
-  }
+    },
+toggleHeader: function(){
+                var menu_icon = Ember.$("#menu_icon");
+                if (menu_icon.attr("href") === "#"){
+                  menu_icon.attr("href", "#nav");
+                  window.location = '#nav';
+                  console.log("Setting to #nav");
+                }
+                else {
+                  menu_icon.attr("href", "#");
+                  window.location = '#';
+                  console.log("Setting to #");
+                }
+              }
+          }
 });
 
 export default ZonesController;

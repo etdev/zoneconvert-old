@@ -1,32 +1,41 @@
 $nav-bg-color: #333;
 
-ul {
-  background-color: $nav-bg-color;
+.menu-container{
+  width: 100%;
+  overflow: hidden;
+
+  a.logo{
+    margin: 0.2em 0.6em 0.6em 0.2em;
+    font-weight: bold;
+  }
+  a.right{
+    margin: 0 1em 0 0;
+    float: right;
+  }
+  a.left{
+    float: left;
+  }
+
 }
 .top-nav{
-  margin: 0;
   background-color: $nav-bg-color;
+  margin: 0;
   height: 54px;
 
   ul{
     max-height: 54px;
     padding: 0 0 0 0;
-
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    list-style: none;
   }
 
-
   .icon{
-    padding: 12px 8px 8px 8px;
+    padding: 16px 8px 8px 8px;
     max-height: 46px;
     max-width: 46px;
   }
-}
-
-ul{
-  text-decoration: none;
-  padding: 0;
-  margin: 0;
-  list-style: none;
 }
 
 li{
@@ -46,10 +55,6 @@ a{
 }
 
 .refresh-content{
-  float: right;
-}
-
-#forceright{
   float: right;
 }
 

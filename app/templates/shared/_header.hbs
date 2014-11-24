@@ -1,11 +1,16 @@
 <nav id="nav" class="top-nav" role="navigation">
 <div id="forceright">
-  <a href="#nav" title="Show navigation"> <img class="icon" src="menu.png"></a>
+  <a {{action 'toggleHeader'}}> <img class="icon" id="menu_icon" src="menu.png"> </a>
+  <!--<a href="#" title="Toggle navigation"><img class="icon" id="menu_icon" onclick="toggleHeader();" src="menu.png"></a>-->
+
+  <!--<a href="#" title="Show navigation">   <a href="#" title="Hide navigation"><img class="icon" src="menu.png" id="menu_icon_on" href="#nav"style="display: none;"></a>-->
 </div>
-  <a href="#" title="Hide navigation"><img class="icon" src="menu.png" href="#nav"></a>
+
     <ul>
       <li> {{link-to 'Home' 'application'}} </li>
       <li> {{link-to 'About' 'about'}} </li>
       <li> {{link-to '日本語' 'application' }} </li>
     </ul>
 </nav>
+
+</script>
