@@ -4,14 +4,16 @@ ul {
   background-color: $nav-bg-color;
 }
 .top-nav{
-  ul{
-    max-height: 54px;
-    padding: 0 0 0 0;
-  }
-
   margin: 0;
   background-color: $nav-bg-color;
   height: 54px;
+
+  ul{
+    max-height: 54px;
+    padding: 0 0 0 0;
+
+  }
+
 
   .icon{
     padding: 12px 8px 8px 8px;
@@ -47,6 +49,10 @@ a{
   float: right;
 }
 
+#forceright{
+  float: right;
+}
+
 @media only screen and ( max-width: 40em ) /* 640 */
 {
     #nav
@@ -67,7 +73,7 @@ a{
     #nav > ul
     {
         height: auto;
-        display: none;
+        display: block;
         position: absolute;
         left: 0;
         right: 0;
