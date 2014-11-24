@@ -29,7 +29,8 @@
     "express": "^4.8.5",
     "glob": "^4.0.5",
     "ember-cli-sass": "~1.0.2",
-    "ember-cli-datepicker": "~1.2.5"
+    "ember-cli-datepicker": "~1.2.5",
+    "ember-cli-responsive": "0.0.9"
   },
   "dependencies": {
     "ember-responsive": "~1.0.0"
