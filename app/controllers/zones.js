@@ -82,6 +82,7 @@ var ZonesController = Ember.ArrayController.extend({
         return result;
       }
     },
+
 toggleHeader: function(){
                 var menu_icon = Ember.$("#menu_icon");
                 if (menu_icon.attr("href") === "#"){
