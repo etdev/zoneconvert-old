@@ -95,8 +95,8 @@ body{
         #nav > a
         {
         }
-        #nav:not( :target ) > a:first-of-type,
-        #nav:target > a:last-of-type
+          #nav:not( :target ) > a:first-of-type,
+          #nav:target > a:last-of-type
         {
             display: block;
         }
@@ -120,6 +120,10 @@ body{
             width: 100%;
             float: none;
         }
+        #nav > ul > li:first-child{
+          display: none;
+        }
+
 
     /* second level */
 
